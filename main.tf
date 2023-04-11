@@ -207,3 +207,16 @@ resource "aws_key_pair" "hashicat" {
   key_name   = local.private_key_filename
   public_key = tls_private_key.hashicat.public_key_openssh
 }
+
+# Introduce Post Condition (HTTP Status Check)
+
+data "http" "hashicat-web" {
+  url = "http://${aws_eip.hashicat.public_dns}"
+
+  lifecycle {
+    postcondition {
+      condition     = contains([200, 201, 204], self.status_code)
+      error_message = "Status code invalid"
+    }
+  }
+}
