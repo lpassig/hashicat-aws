@@ -212,6 +212,7 @@ resource "aws_key_pair" "hashicat" {
 # Introduce Post Condition (HTTP Status Check)
 
 data "http" "hashicat-web" {
+  depends_on = [null_resource.configure-cat-app]
   url = "http://${aws_eip.hashicat.public_dns}"
 
   lifecycle {
