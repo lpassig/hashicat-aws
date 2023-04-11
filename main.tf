@@ -100,6 +100,7 @@ resource "aws_route_table_association" "hashicat" {
   route_table_id = aws_route_table.hashicat.id
 }
 
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
