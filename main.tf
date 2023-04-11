@@ -3,7 +3,7 @@ terraform {
     organization = "lennart-org"
 
     workspaces {
-      name = "demo-tfcb-drift"
+      name = "hashicat-aws"
     }
 }  
     required_providers {
