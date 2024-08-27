@@ -204,10 +204,6 @@ locals {
   private_key_filename = "${var.prefix}-ssh-key.pem"
 }
 
-resource "aws_key_pair" "hashicat" {
-  key_name   = local.private_key_filename
-  public_key = tls_private_key.hashicat.public_key_openssh
-}
 
 # Introduce Post Condition (HTTP Status Check)
 
